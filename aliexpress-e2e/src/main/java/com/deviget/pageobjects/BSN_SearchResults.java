@@ -4,14 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class BSN_SearchResults {
 	
 	public boolean passed = false;
 	WebDriver driver;
 	By nextPageButton = By.xpath("//button[@aria-label='Next page, current page 1']");
-	By productSelector = By.cssSelector("div[product-index='1'][class='item-title']");
+	By productSelector = By.xpath("//div[@product-index='1']//a[@class='item-title']");
 	
 	
 	public BSN_SearchResults(WebDriver driver)
