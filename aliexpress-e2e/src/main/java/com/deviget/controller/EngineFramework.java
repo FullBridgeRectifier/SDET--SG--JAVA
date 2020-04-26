@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class EngineFramework {
 	
@@ -44,26 +45,24 @@ public class EngineFramework {
             return;
         }
     	//Setting up the browser
-    	if(!)
+    	if(!SetupBrowser(browser))
+    	{
+    		System.out.println("Error while fetching and enabling the browser driver");
+            return;
+    	}
+    	//Actually opening the page.
+    	if (!OpenApplication())
+        {
+       	 System.out.println("Error on OpenApplication");
+   	         return ;
+        }        
+        this.passed = true;
     	
     	
     	
     }
     
-	boolean ReadParametersFile(String pathConfigFile)
-	{
-		
-		System.out.println(".........................................ReadPropertiesFile");
-		if(verifyFileExist(pathConfigFile))
-		{
-			this.passed = false;
-			return false;
-		}
-		baseURL = prop.getProperty("baseUrl");
-		browser = prop.getProperty("browser").trim();
-		return true;	
-		
-	}
+	
     
 	
 	
@@ -81,6 +80,21 @@ public class EngineFramework {
 	
 	
 	//-------------------------------------------Helper methods-----------------------------------------\\
+    boolean ReadParametersFile(String pathConfigFile)
+	{
+		
+		System.out.println(".........................................ReadPropertiesFile");
+		if(verifyFileExist(pathConfigFile))
+		{
+			this.passed = false;
+			return false;
+		}
+		baseURL = prop.getProperty("baseUrl");
+		browser = prop.getProperty("browser").trim();
+		return true;	
+		
+	}
+    
 	private boolean verifyFileExist(String pathConfigFile) {
 		try{
 			prop.load(new FileInputStream(pathConfigFile));
@@ -94,16 +108,16 @@ public class EngineFramework {
 		}		
 	}
 	
-	 boolean SetupBrowser(String strBrowser,String strPathServer) 
+	 boolean SetupBrowser(String strBrowser) 
 	  {
 	      if (strBrowser.toUpperCase().equals("CHROME"))
 	      {	          
-	          if (!SetupChrome(strPathServer)) return false;
+	          if (!SetupChrome()) return false;
 	      }	      
 	      return true;
 	  }
 	 
-	  boolean SetupChrome(String pathChrome)
+	  boolean SetupChrome()
 	  {
 	      try
 	         {   
@@ -118,7 +132,29 @@ public class EngineFramework {
 		      }
 	      return true;
 	      
-	  }	 
+	  }
+	  
+	  boolean OpenApplication()
+	  {
+		  if(baseURL.isEmpty())
+		  {
+			  System.out.println("Error while opening the application, base url is empty");
+			  return false;
+		  }
+		  try
+	         {
+	             driver.get(baseURL);
+	             driver.manage().timeouts().implicitlyWait(intDefaultTimeOut, TimeUnit.SECONDS);
+	         }
+	         catch (Exception ex)
+	         {
+	        	 System.out.println(ex.getMessage());
+	             this.defect = ex.getMessage();
+	             return false;
+	         }
+		  return true;
+		  
+	  }
     
     
     
