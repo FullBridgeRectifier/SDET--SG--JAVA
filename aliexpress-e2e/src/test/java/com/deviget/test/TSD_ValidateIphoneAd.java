@@ -33,6 +33,8 @@ public class TSD_ValidateIphoneAd extends TestDriver {
 		    e.printStackTrace();
 		}
 		assertEquals(landing.passed, true);
+		assertEquals(search.passed, true);
+		assertEquals(product.passed, true);
 		
 	}
 	

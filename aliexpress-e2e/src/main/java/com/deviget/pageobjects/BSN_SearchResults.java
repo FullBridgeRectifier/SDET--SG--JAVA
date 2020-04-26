@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -45,8 +47,12 @@ public class BSN_SearchResults {
 	{
 		try 
 		{
-			WebDriverWait wait = new WebDriverWait(driver,10);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(productSelector));
+			WebDriverWait wait = new WebDriverWait(driver,20);
+			WebElement elementToBeStale = driver.findElement(productSelector);
+			ExpectedCondition<Boolean> cond1 = ExpectedConditions.stalenessOf(elementToBeStale);
+			ExpectedCondition<WebElement> cond2 = ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@product-index='1']//a[@class='item-title']"));
+			ExpectedCondition<Boolean> cond = ExpectedConditions.and(cond1, cond2);
+			wait.until(cond);
 			driver.findElement(productSelector).click();
 			passed = true;
 			
