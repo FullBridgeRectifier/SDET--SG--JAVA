@@ -9,8 +9,11 @@ public class BSN_LandingPage {
 	public boolean passed = false;
 	WebDriver driver;
 	By searchBox = By.id("search-key");
-	By popUp = By.className("ui-window ui-window-normal ui-window-transition ui-newuser-layer-dialog");
+	By popUp = By.cssSelector("div[data-widget-cid='widget-21']");
 	By popUpCloseButton = By.className("close-layer");
+	By searchButton = By.className("search-button");
+	By popUpInternalPages = By.className("newuser-container");
+	By popUpCloseButtonInternalPages = By.className("next-dialog-close");
 	
 	public BSN_LandingPage(WebDriver driver)
 	{
@@ -46,6 +49,30 @@ public class BSN_LandingPage {
 		}
 		
 		
+	}
+	
+	public void clickSearch()
+	{
+		try 
+		{
+			driver.findElement(searchButton).click();	
+			passed = true;
+			 //Verify if page displayed popup after redirection
+				   try
+				   {
+					   driver.findElement(popUpInternalPages).isDisplayed();
+					   driver.findElement(popUpCloseButtonInternalPages).click();
+					   
+				   }
+				   catch(NoSuchElementException e)
+				   {
+					   System.out.println("Popup was not shown, this is ok: " + e.getMessage());
+				   }
+		   
+		}
+		catch(Exception e) {
+			System.out.println("Could not send click the search button, trace: " + e.getMessage());
+		}
 	}
 	
 }

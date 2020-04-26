@@ -16,7 +16,9 @@ public class TSD_ValidateIphoneAd extends TestDriver {
 	
 		try 
 		{
+			landing.closePopupIfPresent();
 			landing.setSearch("iphone");
+			landing.clickSearch();
 		}catch(Exception e)
 		{
 		    e.printStackTrace();
