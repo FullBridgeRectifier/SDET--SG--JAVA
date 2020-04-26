@@ -1,0 +1,2 @@
+baseURL=http://www.aliexpress.com
+browser=CHROME
