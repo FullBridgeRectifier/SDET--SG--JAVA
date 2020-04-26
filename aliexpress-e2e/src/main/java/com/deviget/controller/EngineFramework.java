@@ -53,7 +53,7 @@ public class EngineFramework {
     	//Actually opening the page.
     	if (!OpenApplication())
         {
-       	 System.out.println("Error on OpenApplication");
+       	 System.out.println("Error on OpenApplication (URL)");
    	         return ;
         }        
         this.passed = true;
