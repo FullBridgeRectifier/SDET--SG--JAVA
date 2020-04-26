@@ -125,6 +125,7 @@ public class EngineFramework {
 			      System.setProperty("webdriver.chrome.driver", chromeSetup);	    		
 			      driver = new ChromeDriver();
 			      driver.manage().window().maximize();
+			      driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
 		      }
 	      catch (Exception ex)
 		      {
