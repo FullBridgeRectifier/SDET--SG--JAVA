@@ -57,32 +57,11 @@ public class EngineFramework {
    	         return ;
         }        
         this.passed = true;
-    	
-    	
-    	
     }
     
-	
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//-------------------------------------------Helper methods-----------------------------------------\\
     boolean ReadParametersFile(String pathConfigFile)
 	{
-		
 		System.out.println(".........................................ReadPropertiesFile");
 		if(!verifyFileExist(pathConfigFile))
 		{
@@ -92,7 +71,6 @@ public class EngineFramework {
 		baseURL = prop.getProperty("baseURL");
 		browser = prop.getProperty("browser").trim();
 		return true;	
-		
 	}
     
 	private boolean verifyFileExist(String pathConfigFile) {
@@ -133,7 +111,6 @@ public class EngineFramework {
 		          return false;
 		      }
 	      return true;
-	      
 	  }
 	  
 	  boolean OpenApplication()
@@ -155,12 +132,5 @@ public class EngineFramework {
 	             return false;
 	         }
 		  return true;
-		  
 	  }
-    
-    
-    
-    
-    
-
 }

@@ -17,7 +17,7 @@ public class TestDriver {
 	protected EngineFramework engine;
 	
 	
-	
+	//Setup engine is in charge of calling the EngineFramework in order to bring forward the actual browser driver
 	@BeforeClass
     public void SetupEngine()
     { 
@@ -38,19 +38,13 @@ public class TestDriver {
 		driver = engine.driver;
 		baseUrl = engine.baseURL;
 		return true;
-		
 	}
 	
-	
+	//Used to end the browser after each test
 	@AfterClass
     protected void CloseAllDriver(){
 
         driver.close();
         driver.quit();
     }
-	
-	
-	
-	
-
 }

@@ -28,8 +28,6 @@ public class BSN_SearchResults {
 		try 
 		{
 			JavascriptExecutor js = (JavascriptExecutor) driver;
-			//removing WebElement nextButton = driver.findElement(nextPageButton);
-			//did not work js.executeScript("arguments[0].scrollIntoView();", nextButton);
 			js.executeScript("window.scrollBy(0,13000)");
 			driver.findElement(nextPageButton).click();
 			passed = true;
@@ -38,9 +36,7 @@ public class BSN_SearchResults {
 		catch(NoSuchElementException e)
 		{
 			System.out.println("Could not click the next page button verify stacktrace: " + e.getMessage());
-			
 		}
-		
 	}
 	
 	public void clickItem()
@@ -55,18 +51,10 @@ public class BSN_SearchResults {
 			wait.until(cond);
 			driver.findElement(productSelector).click();
 			passed = true;
-			
 		}
 		catch(NoSuchElementException e)
 		{
 			System.out.println("Could not click the product or item verify stacktrace: " + e.getMessage());
-			
 		}
-		
 	}
-	
-	
-	
-	
-
 }

@@ -12,7 +12,7 @@ public class TSD_ValidateIphoneAd extends TestDriver {
 	
 	
 	@Test
-	public void ValidateIphoneAdTest()
+	public void ValidateIphoneAdTestE2E()
 	{
 		BSN_LandingPage landing = new BSN_LandingPage(driver);
 		BSN_SearchResults search = new BSN_SearchResults(driver);
@@ -27,7 +27,6 @@ public class TSD_ValidateIphoneAd extends TestDriver {
 			search.clickItem();
 			product.switchToNewTab();
 			product.validateStock();
-			
 		}
 		catch(Exception e)
 		{
@@ -36,7 +35,6 @@ public class TSD_ValidateIphoneAd extends TestDriver {
 		assertEquals(landing.passed, true);
 		assertEquals(search.passed, true);
 		assertEquals(product.passed, true);
-		
 	}
 	
 	
@@ -46,7 +44,6 @@ public class TSD_ValidateIphoneAd extends TestDriver {
 	public void ValidateLandingPageTest()
 	{
 		BSN_LandingPage landing = new BSN_LandingPage(driver);
-		
 		try 
 		{
 			landing.closePopupIfPresent();
@@ -58,7 +55,6 @@ public class TSD_ValidateIphoneAd extends TestDriver {
 		    e.printStackTrace();
 		}
 		assertEquals(landing.passed, true);
-		
 	}
 	
 	@Test
@@ -76,7 +72,6 @@ public class TSD_ValidateIphoneAd extends TestDriver {
 		    e.printStackTrace();
 		}
 		assertEquals(search.passed, true);
-		
 	}
 	
 	@Test
@@ -86,21 +81,13 @@ public class TSD_ValidateIphoneAd extends TestDriver {
 		BSN_ProductPage product = new BSN_ProductPage(driver);	
 		try 
 		{
-			
 			product.switchToNewTab();
 			product.validateStock();
-			
 		}
 		catch(Exception e)
 		{
 		    e.printStackTrace();
 		}
 		assertEquals(product.passed, true);
-		
 	}
-	
-	
-	
-	
-
 }
