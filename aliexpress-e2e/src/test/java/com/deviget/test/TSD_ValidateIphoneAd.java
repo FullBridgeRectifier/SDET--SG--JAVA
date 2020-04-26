@@ -1,5 +1,9 @@
 package com.deviget.test;
 
-public class TSD_ValidateIphoneAd {
+import com.deviget.master.TestDriver;
+
+public class TSD_ValidateIphoneAd extends TestDriver {
+	
+	
 
 }
