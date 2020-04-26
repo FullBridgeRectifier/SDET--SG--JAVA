@@ -84,12 +84,12 @@ public class EngineFramework {
 	{
 		
 		System.out.println(".........................................ReadPropertiesFile");
-		if(verifyFileExist(pathConfigFile))
+		if(!verifyFileExist(pathConfigFile))
 		{
 			this.passed = false;
 			return false;
 		}
-		baseURL = prop.getProperty("baseUrl");
+		baseURL = prop.getProperty("baseURL");
 		browser = prop.getProperty("browser").trim();
 		return true;	
 		

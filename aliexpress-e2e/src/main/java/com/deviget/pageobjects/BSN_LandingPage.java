@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 
 public class BSN_LandingPage {
 	
+	public boolean passed = false;
 	WebDriver driver;
 	By searchBox = By.id("search-key");
 	
@@ -14,7 +15,15 @@ public class BSN_LandingPage {
 	}
 	public void setSearch(String searchItem) 
 	{
-		driver.findElement(searchBox).sendKeys(searchItem);
+		try 
+		{
+			driver.findElement(searchBox).sendKeys(searchItem);	
+			passed = true;
+		}
+		catch(Exception e) {
+			System.out.println("Could not send the text to the search box, trace: " + e.getMessage());
+		}
+		
 		
 	}
 	

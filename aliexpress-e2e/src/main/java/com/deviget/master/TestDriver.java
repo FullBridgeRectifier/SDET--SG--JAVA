@@ -21,7 +21,7 @@ public class TestDriver {
 	@BeforeClass
     public void SetupEngine()
     { 
-    	String parametersFile = new File(System.getProperty("user.dir")).getAbsolutePath() + "/Parameters.txt";
+    	String parametersFile = new File(System.getProperty("user.dir")).getAbsolutePath() + "\\parameters.txt";
         strPathConfigFile = parametersFile;        
         Assert.assertEquals(StartEngine(strPathConfigFile), true);        
     }	
