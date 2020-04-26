@@ -124,6 +124,7 @@ public class EngineFramework {
 		    	  String chromeSetup = new File(System.getProperty("user.dir")).getAbsolutePath() + "/libs/Selenium_Common/chromedriver.exe";	       
 			      System.setProperty("webdriver.chrome.driver", chromeSetup);	    		
 			      driver = new ChromeDriver();
+			      driver.manage().window().maximize();
 		      }
 	      catch (Exception ex)
 		      {
